@@ -31,13 +31,6 @@ public class Pebble {
         return neighborList;
     }
 
-    //May not need this
-    public boolean isSameLocation(Pebble p){
-        if(this.xLocation == p.xLocation && this.yLocation == p.yLocation) {
-            return true;
-        }
-        return false;
-    }
 
     public Color getColor(){
         return this.color;
