@@ -49,9 +49,10 @@ public class Board {
      * replaceWhiteAdjacentPebbles() Takes an integer of iterations and starting index as inputs, identifies
      * where the white pebbles neighbors are, and looks for the neighbors in the blackmap to remove
      * and add to the white pebble list
+     * called recursively with steps incremented by one and the current index
      * Run Time: n^2*m where n is number of white Pebbles and m is number of black Pebbles
      */
-    public int changeBlackPebbles(int steps, int index) {
+    public int changeBlackPebblesRecursively(int steps, int index) {
         List<Pebble> changedPebbles = new ArrayList<>();
         int x;
         for (x = index; x < whiteList.size(); x++) {
@@ -70,7 +71,7 @@ public class Board {
         }
         else{
             whiteList.addAll(changedPebbles);
-            return this.changeBlackPebbles(steps + 1, x);
+            return this.changeBlackPebblesRecursively(steps + 1, x);
         }
     }
 
@@ -78,7 +79,7 @@ public class Board {
      * @return a string stating the amount of turns took and the number of black pebbles remaining
      */
     public String gameResult(){
-        return "It took " + this.changeBlackPebbles(0, 0) + " steps to change the pebbles " +
+        return "It took " + this.changeBlackPebblesRecursively(0, 0) + " steps to change the pebbles " +
                 "and there are " + blackMap.size() + " black pebbles left";
     }
 

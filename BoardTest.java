@@ -52,8 +52,8 @@ class BoardTest {
         this.makeList();
         Board testBoard = new Board(5,5,testList);
         Board testBoard2 = new Board(5,5,testList2);
-        assertEquals(2, testBoard.changeBlackPebbles(0,0));
-        assertEquals(6, testBoard2.changeBlackPebbles(0,0));
+        assertEquals(2, testBoard.changeBlackPebblesRecursively(0,0));
+        assertEquals(6, testBoard2.changeBlackPebblesRecursively(0,0));
     }
 
     /*
