@@ -49,6 +49,7 @@ public class Board {
      * replaceWhiteAdjacentPebbles() Takes an integer of iterations and starting index as inputs, identifies
      * where the white pebbles neighbors are, and looks for the neighbors in the blackmap to remove
      * and add to the white pebble list
+     * Run Time: n^2*m where n is number of white Pebbles and m is number of black Pebbles
      */
     public int changeBlackPebbles(int steps, int index) {
         List<Pebble> changedPebbles = new ArrayList<>();
@@ -125,5 +126,20 @@ public class Board {
         System.out.println(b.gameResult());
         System.out.println(b2.gameResult());
     }
+
+    /*
+    changeBlackPebbles algorithm runtime: (n^2 * m)
+        n = number of white pebbles
+        m = number of black pebbles
+        The first run through of this method has a run time of 4n because a list of 4 is run through
+        for every Pebble white pebble but since the 4 is negligible, we ignore it
+        The extra n*m comes from the recursion, it is the worst case number of recursive calls
+
+    changeBlackPebbles algorithm correctness:
+        The algorithm will find and change the black neighbors from the initial index till the end of the array
+        Any pebbles changed are added onto the end of the list of white pebbles
+        The algorithm is called again starting from the point it left off
+        Based on step one, all black pebbles will be correctly changed
+     */
 
 }
