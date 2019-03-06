@@ -11,8 +11,7 @@ public class Pebble {
 	private int yLocation;
 
 	/*
-	 * INPUT: INT, INT, COLOR 
-	 * OUTPUT:NONE
+	 * @param: xlocation, ylocation and color of pebble 
 	 * Constructor takes two int inputs and a color to
 	 * set them as the x and y location as well as the color.
 	 */
@@ -24,8 +23,6 @@ public class Pebble {
 	}
 
 	/*
-	 * INPUT:NONE
-	 * OUTPUT:NONE
 	 * changeColorToWhite() method will change the color of the pebble to white.
 	 */
 	public void changeColorToWhite() {
@@ -33,8 +30,7 @@ public class Pebble {
 	}
 
 	/*
-	 * INPUT:NONE
-	 * OUTPUT: neighborList
+	 * @return list of neighbor locations 
 	 * isNeighbor() Accepts a Pebble and checks if this Pebble is a neighbor of the input Pebble.
 	 */
 	public List<String> getNeighborsLocations() {
@@ -52,6 +48,7 @@ public class Pebble {
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
+	 * @return string of location 
 	 * toString() method will create a string joining the pebble's locations
 	 */
 	public String toString() {
