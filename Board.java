@@ -11,7 +11,7 @@ public class Board {
 
     private int width;
 
-    private Map<String, Pebble> blackMap = new HashMap<>();
+    private Map<CoordinatePair, Pebble> blackMap = new HashMap<>();
 
     private List<Pebble> whiteList = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class Board {
     public void sortByColor(List<Pebble> p){
         for (Pebble pebble : p){
             if(pebble.getColor() == Color.BLACK){
-                blackMap.put(pebble.toString(), pebble);
+                blackMap.put(pebble.getPair(), pebble);
             }
             else{
                 whiteList.add(pebble);
@@ -56,10 +56,10 @@ public class Board {
         List<Pebble> changedPebbles = new ArrayList<>();
         int x;
         for (x = index; x < whiteList.size(); x++) {
-            for (String string : whiteList.get(x).getNeighborsLocations()) {
-                Pebble p = blackMap.get(string);
+            for (CoordinatePair pair : whiteList.get(x).getNeighborsLocations()) {
+                Pebble p = blackMap.get(pair);
                 if (p != null) {
-                    blackMap.remove(string);
+                    blackMap.remove(pair);
                     p.changeColorToWhite();
                     changedPebbles.add(p);
                 }
@@ -87,23 +87,26 @@ public class Board {
         return whiteList;
     }
 
+    public Map<CoordinatePair, Pebble> getBlackMap() {
+        return blackMap;
+    }
 
     public static void main(String[] args){
-        Pebble p = new Pebble(3,3, Color.WHITE);
-        Pebble p1 = new Pebble(1,3, Color.BLACK);
-        Pebble p2 = new Pebble(2,3, Color.BLACK);
-        Pebble p3 = new Pebble(3,2, Color.BLACK);
-        Pebble p4 = new Pebble(3,1, Color.BLACK);
-        Pebble p5 = new Pebble(2,2, Color.WHITE);
-        Pebble p6 = new Pebble(1,1, Color.BLACK);
+        Pebble p = new Pebble(3,3, Color.WHITE, new CoordinatePair(3,3));
+        Pebble p1 = new Pebble(1,3, Color.BLACK, new CoordinatePair(1,3));
+        Pebble p2 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
+        Pebble p3 = new Pebble(3,2, Color.BLACK, new CoordinatePair(3,2));
+        Pebble p4 = new Pebble(3,1, Color.BLACK, new CoordinatePair(3,1));
+        Pebble p5 = new Pebble(2,2, Color.WHITE, new CoordinatePair(2,2));
+        Pebble p6 = new Pebble(1,1, Color.BLACK, new CoordinatePair(1,1));
 
-        Pebble pp = new Pebble(1,1, Color.WHITE);
-        Pebble pp1 = new Pebble(1,2, Color.BLACK);
-        Pebble pp2 = new Pebble(2,2, Color.BLACK);
-        Pebble pp3 = new Pebble(2,3, Color.BLACK);
-        Pebble pp4 = new Pebble(3,3, Color.BLACK);
-        Pebble pp5 = new Pebble(3,4, Color.BLACK);
-        Pebble pp6 = new Pebble(4,4, Color.BLACK);
+        Pebble pp = new Pebble(1,1, Color.WHITE, new CoordinatePair(1,1));
+        Pebble pp1 = new Pebble(1,2, Color.BLACK, new CoordinatePair(1,2));
+        Pebble pp2 = new Pebble(2,2, Color.BLACK, new CoordinatePair(2,2));
+        Pebble pp3 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
+        Pebble pp4 = new Pebble(3,3, Color.BLACK, new CoordinatePair(3,3));
+        Pebble pp5 = new Pebble(3,4, Color.BLACK, new CoordinatePair(3,4));
+        Pebble pp6 = new Pebble(4,4, Color.BLACK, new CoordinatePair(4,4));
 
         List<Pebble> testList2 = new ArrayList<>();
         testList2.add(pp);
@@ -135,7 +138,6 @@ public class Board {
         The first run through of this method has a run time of 4n because a list of 4 is run through
         for every Pebble white pebble but since the 4 is negligible, we ignore it
         The extra n*m comes from the recursion, it is the worst case number of recursive calls
-
     changeBlackPebbles algorithm correctness:
         The algorithm will find and change the black neighbors from the initial index till the end of the array
         Any pebbles changed are added onto the end of the list of white pebbles
