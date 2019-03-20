@@ -21,10 +21,10 @@ public class Pebble {
      * set them as the x and y location as well as the color.
      */
 
-    public Pebble(int xLocation, int yLocation, Color color, CoordinatePair pair) {
+    public Pebble(Color color, CoordinatePair pair) {
         this.color = color;
-        this.xLocation = xLocation;
-        this.yLocation = yLocation;
+        this.xLocation = pair.getxLocation();
+        this.yLocation = pair.getyLocation();
         this.pair = pair;
     }
 
@@ -57,9 +57,6 @@ public class Pebble {
      * @return string of location
      * toString() method will create a string joining the pebble's locations
      */
-    public String toString() {
-        return xLocation + ", " + yLocation;
-    }
 
     public CoordinatePair getPair(){ return pair;}
 

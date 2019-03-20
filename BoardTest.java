@@ -15,25 +15,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest {
 
-        Pebble p = new Pebble(3,3, Color.WHITE, new CoordinatePair(3,3));
-        Pebble p1 = new Pebble(1,3, Color.BLACK, new CoordinatePair(1,3));
-        Pebble p2 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
-        Pebble p3 = new Pebble(3,2, Color.BLACK, new CoordinatePair(3,2));
-        Pebble p4 = new Pebble(3,1, Color.BLACK, new CoordinatePair(3,1));
-        Pebble p5 = new Pebble(2,2, Color.WHITE, new CoordinatePair(2,2));
-        Pebble p6 = new Pebble(1,1, Color.BLACK, new CoordinatePair(1,1));
-        Pebble p7 = new Pebble(1,1, Color.WHITE, new CoordinatePair(4,1));
-        Pebble p8 = new Pebble(1,1, Color.WHITE, new CoordinatePair(4,2));
-        Pebble p9 = new Pebble(1,1, Color.WHITE, new CoordinatePair(3,4));
-        Pebble p10 = new Pebble(1,1, Color.WHITE, new CoordinatePair(5,1));
+        Pebble p = new Pebble(Color.WHITE, new CoordinatePair(3,3));
+        Pebble p1 = new Pebble(Color.BLACK, new CoordinatePair(1,3));
+        Pebble p2 = new Pebble(Color.BLACK, new CoordinatePair(2,3));
+        Pebble p3 = new Pebble(Color.BLACK, new CoordinatePair(3,2));
+        Pebble p4 = new Pebble(Color.BLACK, new CoordinatePair(3,1));
+        Pebble p5 = new Pebble(Color.WHITE, new CoordinatePair(2,2));
+        Pebble p6 = new Pebble(Color.BLACK, new CoordinatePair(1,1));
+        Pebble p7 = new Pebble(Color.WHITE, new CoordinatePair(4,1));
+        Pebble p8 = new Pebble(Color.WHITE, new CoordinatePair(4,2));
+        Pebble p9 = new Pebble(Color.WHITE, new CoordinatePair(3,4));
+        Pebble p10 = new Pebble(Color.WHITE, new CoordinatePair(5,1));
 
-        Pebble pp = new Pebble(1,1, Color.WHITE, new CoordinatePair(1,1));
-        Pebble pp1 = new Pebble(1,2, Color.BLACK, new CoordinatePair(1,2));
-        Pebble pp2 = new Pebble(2,2, Color.BLACK, new CoordinatePair(2,2));
-        Pebble pp3 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
-        Pebble pp4 = new Pebble(3,3, Color.BLACK, new CoordinatePair(3,3));
-        Pebble pp5 = new Pebble(3,4, Color.BLACK, new CoordinatePair(3,4));
-        Pebble pp6 = new Pebble(4,4, Color.BLACK, new CoordinatePair(4,4));
+        Pebble pp = new Pebble(Color.WHITE, new CoordinatePair(1,1));
+        Pebble pp1 = new Pebble(Color.BLACK, new CoordinatePair(1,2));
+        Pebble pp2 = new Pebble(Color.BLACK, new CoordinatePair(2,2));
+        Pebble pp3 = new Pebble(Color.BLACK, new CoordinatePair(2,3));
+        Pebble pp4 = new Pebble(Color.BLACK, new CoordinatePair(3,3));
+        Pebble pp5 = new Pebble(Color.BLACK, new CoordinatePair(3,4));
+        Pebble pp6 = new Pebble(Color.BLACK, new CoordinatePair(4,4));
 
         List<Pebble> testList = new ArrayList<>();
         List<Pebble> testList2 = new ArrayList<>();
@@ -45,7 +45,11 @@ public class BoardTest {
         Tests the sortByColor method of class Board
         AssertEquals the expected list of white pebbles and the actual list
         AssertEquals the expected map of black pebbles with the actual map
-        Four cases: Mix of black and white Pebbles, Only white Pebbles, Only Black Pebbles and no Pebbles
+        Four cases: Mix of black and white Pebbles
+                    Only white Pebbles
+                    Only Black Pebbles
+                    No Pebbles
+        Testing Type: Structured Basis, Good Data
          */
         @org.junit.Test
         void sortByColor() {
@@ -112,7 +116,6 @@ public class BoardTest {
 
         /*
            Tests the changeBlackPebbles method of class board
-           checks two cases
            assertEquals the expected number of steps and the actual number
         */
         @org.junit.Test
@@ -126,8 +129,7 @@ public class BoardTest {
 
         /*
         Tests the gameResult method of class Board
-        Checks two cases
-        asserEquals the expected string and the actual string
+        assertEquals the expected string and the actual string
          */
         @org.junit.Test
         void gameResult() {
@@ -140,6 +142,7 @@ public class BoardTest {
                     testBoard2.gameResult());
         }
 
+        //Makes the lists and maps that are tested
         public void makeList(){
             testList.add(p);
             testList.add(p1);

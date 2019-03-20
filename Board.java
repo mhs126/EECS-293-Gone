@@ -92,21 +92,21 @@ public class Board {
     }
 
     public static void main(String[] args){
-        Pebble p = new Pebble(3,3, Color.WHITE, new CoordinatePair(3,3));
-        Pebble p1 = new Pebble(1,3, Color.BLACK, new CoordinatePair(1,3));
-        Pebble p2 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
-        Pebble p3 = new Pebble(3,2, Color.BLACK, new CoordinatePair(3,2));
-        Pebble p4 = new Pebble(3,1, Color.BLACK, new CoordinatePair(3,1));
-        Pebble p5 = new Pebble(2,2, Color.WHITE, new CoordinatePair(2,2));
-        Pebble p6 = new Pebble(1,1, Color.BLACK, new CoordinatePair(1,1));
+        Pebble p = new Pebble(Color.WHITE, new CoordinatePair(3,3));
+        Pebble p1 = new Pebble(Color.BLACK, new CoordinatePair(1,3));
+        Pebble p2 = new Pebble(Color.BLACK, new CoordinatePair(2,3));
+        Pebble p3 = new Pebble(Color.BLACK, new CoordinatePair(3,2));
+        Pebble p4 = new Pebble(Color.BLACK, new CoordinatePair(3,1));
+        Pebble p5 = new Pebble(Color.WHITE, new CoordinatePair(2,2));
+        Pebble p6 = new Pebble(Color.BLACK, new CoordinatePair(1,1));
 
-        Pebble pp = new Pebble(1,1, Color.WHITE, new CoordinatePair(1,1));
-        Pebble pp1 = new Pebble(1,2, Color.BLACK, new CoordinatePair(1,2));
-        Pebble pp2 = new Pebble(2,2, Color.BLACK, new CoordinatePair(2,2));
-        Pebble pp3 = new Pebble(2,3, Color.BLACK, new CoordinatePair(2,3));
-        Pebble pp4 = new Pebble(3,3, Color.BLACK, new CoordinatePair(3,3));
-        Pebble pp5 = new Pebble(3,4, Color.BLACK, new CoordinatePair(3,4));
-        Pebble pp6 = new Pebble(4,4, Color.BLACK, new CoordinatePair(4,4));
+        Pebble pp = new Pebble(Color.WHITE, new CoordinatePair(1,1));
+        Pebble pp1 = new Pebble(Color.BLACK, new CoordinatePair(1,2));
+        Pebble pp2 = new Pebble( Color.BLACK, new CoordinatePair(2,2));
+        Pebble pp3 = new Pebble( Color.BLACK, new CoordinatePair(2,3));
+        Pebble pp4 = new Pebble( Color.BLACK, new CoordinatePair(3,3));
+        Pebble pp5 = new Pebble(Color.BLACK, new CoordinatePair(3,4));
+        Pebble pp6 = new Pebble(Color.BLACK, new CoordinatePair(4,4));
 
         List<Pebble> testList2 = new ArrayList<>();
         testList2.add(pp);
