@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest {
@@ -40,6 +39,8 @@ public class BoardTest {
         List<Pebble> allWhiteList = new ArrayList<>();
         List<Pebble> allBlackList = new ArrayList<>();
         Map<CoordinatePair, Pebble> testBlackMap = new HashMap<>();
+        List<Pebble> stressList2 = new ArrayList<>();
+        List<Pebble> emptyList = new ArrayList<>();
 
         /*
         Tests the sortByColor method of class Board
@@ -52,9 +53,8 @@ public class BoardTest {
         Testing Type: Structured Basis, Good Data
          */
         @org.junit.Test
-        void sortByColor() {
+        public void sortByColor() {
             this.makeList();
-            List<Pebble> emptyList = new ArrayList<>();
             Map<CoordinatePair, Pebble> emptyMap = new HashMap<>();
 
             //Mix of black and  white Pebbles test
@@ -76,14 +76,16 @@ public class BoardTest {
             Board testBoard4 = new Board(5,5, emptyList);
             assertEquals(emptyList, testBoard4.getWhiteList());
             assertEquals(emptyMap, testBoard4.getBlackMap());
+
         }
 
         /*
         Tests the getWhiteList method of class Board
         AssertEquals the expected list of white pebbles with the actual list
+        Testing Type: Structured Basis
          */
         @org.junit.Test
-        void getWhiteList() {
+        public void getWhiteList() {
             this.makeList();
             Board testBoard = new Board(5,5,testList);
             List<Pebble> list = new ArrayList<>();
@@ -99,9 +101,10 @@ public class BoardTest {
         /*
         Tests the getBlackMap method of class Board
         AssertEquals the expected map of black pebbles with the actual map
+        Testing Type: Structured Basis
      */
         @org.junit.Test
-        void getBlackMap() {
+        public void getBlackMap() {
             this.makeList();
             Board testBoard = new Board(5,5,testList);
             Map<CoordinatePair, Pebble> testMap = new HashMap<>();
@@ -115,31 +118,79 @@ public class BoardTest {
 
 
         /*
-           Tests the changeBlackPebbles method of class board
-           assertEquals the expected number of steps and the actual number
+
+        Tests the changeBlackPebbles method of class board
+        AssertEquals the expected number of steps and the actual number
+        Four cases: Mix of black and white Pebbles
+                    Only white Pebbles
+                    Only Black Pebbles
+                    No Pebbles
+        Testing Type: Structured Basis, Good Data
         */
         @org.junit.Test
-        void changeBlackPebbles() {
+        public void changeBlackPebbles() {
             this.makeList();
+
+            //Mix of black and white pebbles
             Board testBoard = new Board(5,5,testList);
-            Board testBoard2 = new Board(5,5,testList2);
             assertEquals(2, testBoard.changeBlackPebblesRecursively(0,0));
-            assertEquals(6, testBoard2.changeBlackPebblesRecursively(0,0));
+
+            //Only white Pebbles
+            Board testBoard2 = new Board(5,5,allWhiteList);
+            assertEquals(0, testBoard2.changeBlackPebblesRecursively(0, 0));
+
+            //Only Black pebbles
+            Board testBoard3 = new Board(5,5,allBlackList);
+            assertEquals(0, testBoard3.changeBlackPebblesRecursively(0, 0));
+
+            //No pebbles
+            Board testBoard4 = new Board(5,5, emptyList);
+            assertEquals(0, testBoard4.changeBlackPebblesRecursively(0, 0));
         }
 
         /*
         Tests the gameResult method of class Board
         assertEquals the expected string and the actual string
+        Two Cases: Are Black Pebbles Left
+                   No Black Pebbles Left
+        Testing Type: Structured Basis, Good Data
          */
         @org.junit.Test
-        void gameResult() {
+        public void gameResult() {
             this.makeList();
+
+            //Black Pebbles remain
             Board testBoard = new Board(3,3,testList);
-            Board testBoard2 = new Board(5,5,testList2);
             assertEquals("It took 2 steps to change the pebbles and there are 1 black pebbles left",
                     testBoard.gameResult());
+
+            //No black pebbles remain
+            Board testBoard2 = new Board(5,5,testList2);
             assertEquals("It took 6 steps to change the pebbles and there are 0 black pebbles left",
                     testBoard2.gameResult());
+        }
+        /*
+        stressTest inputs a large amount of data
+        assertEquals rough maximum number of changes before a stack overflow
+        Breaks at roughly 5000 changes
+        Testing Type: Stress Test, Bad Data Test
+        */
+
+        @org.junit.Test
+        public void stressTest(){
+            this.makeList();
+            Board testBoard5 = new Board(16384,16384, stressList2);
+            assertEquals(4796, testBoard5.changeBlackPebblesRecursively(0,0));
+        }
+
+        /*
+        Tests the Board class for null inputs
+        Tests the sortByColor method called by the constructor from class Board
+        Testing Type: Bad Data Test
+         */
+        @org.junit.Test(expected = NullPointerException.class)
+        public void badDateTest(){
+            Board testBoard = new Board(5,5,null);
         }
 
         //Makes the lists and maps that are tested
@@ -182,6 +233,12 @@ public class BoardTest {
             testBlackMap.put(p3.getPair(), p3);
             testBlackMap.put(p4.getPair(), p4);
             testBlackMap.put(p6.getPair(), p6);
+
+            stressList2.add(new Pebble(Color.WHITE, new CoordinatePair(1,1)));
+            for(int y = 2; y < 2400; y++){
+                stressList2.add(new Pebble(Color.BLACK, new CoordinatePair(y-1, y)));
+                stressList2.add(new Pebble(Color.BLACK, new CoordinatePair(y, y)));
+            }
         }
 
     }

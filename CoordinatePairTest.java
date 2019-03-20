@@ -15,6 +15,7 @@ public class CoordinatePairTest {
     CoordinatePair pair7 = new CoordinatePair(100000, 1);
     CoordinatePair pair8 = new CoordinatePair(16385, 1);
     CoordinatePair pair9 = new CoordinatePair(16384, 16385);
+    CoordinatePair pair10 = new CoordinatePair(-16384, -16385);
 
     /*
     Tests the equals method of the CoordinatePair class
@@ -40,12 +41,14 @@ public class CoordinatePairTest {
     /*
     Tests ths hashCode method of the CoordinatePair class
     AssertEquals the expected integer value and the hachCode method called on a CoordinatePair
-    Five Cases: Ordinary CoordinatePair location
+    Seven Cases: Ordinary CoordinatePair location
                 X-location of 0
                 X-location < 0
                 X-location very large
                 Coordinate pair values greater than 16384 that lead to the same hash value
-    Testing Type: Boundary testing
+                Large Positive Values
+                Large Negative Values
+    Testing Type: Boundary and Compound Boundary testing
      */
     @org.junit.Test
     public void hashCodeTest() {
@@ -63,6 +66,12 @@ public class CoordinatePairTest {
 
         //Two pairs with the same hash code
         assertEquals(pair8.hashCode(), pair9.hashCode());
+
+        //Two large coordinate values
+        assertEquals(268451841, pair9.hashCode());
+
+        //Testing two large negative coordinate values
+        assertEquals(-268451841, pair10.hashCode());
     }
 
     /*

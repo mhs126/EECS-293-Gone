@@ -42,6 +42,5 @@ public class CoordinatePair {
         Map<CoordinatePair, Integer> map = new HashMap<>();
         map.put(c, 6);
         System.out.println(map.get(c1));
-        System.out.println(Integer.parseInt(c.xLocation + "" + c.yLocation));
     }
 }

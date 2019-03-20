@@ -21,6 +21,9 @@ public class PebbleTest {
     Pebble pn4 = new Pebble(Color.BLACK, new CoordinatePair(2,3));
     Pebble pn5 = new Pebble(Color.BLACK, new CoordinatePair(2,1));
 
+    CoordinatePair pair = new CoordinatePair(5,5);
+    Pebble pp = new Pebble(Color.WHITE, pair);
+
     /*
     Tests the changeColorToWhite method of class Pebble
     AssertEquals the Color white and the actual color of a Pebble
@@ -54,11 +57,26 @@ public class PebbleTest {
         assertEquals(neighborList, pn1.getNeighborsLocations());
     }
 
+    /*
+    Tests the getColor method from the pebble class
+    AssertEquals the expected Color and the actual Color
+    Two Cases: One WHITE Pebble
+               One BLACK Pebble
+    Testing Type: Structured Basis
+     */
     @Test
     public void getColor() {
+        assertEquals(Color.WHITE, p.getColor());
+        assertEquals(Color.BLACK, p1.getColor());
     }
 
+    /*
+    Tests the getPair method from the Pebble class
+    AssertEquals the expected pair and the actual pair
+    Testing Type: Structured Basis
+     */
     @Test
     public void getPair() {
+        assertEquals(pair, pp.getPair());
     }
 }
